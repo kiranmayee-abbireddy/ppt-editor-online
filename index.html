@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerPoint Online</title>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Pacifico&family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Lobster&family=Satisfy&family=Cinzel:wght@400;700&family=Righteous&family=Comfortaa:wght@400;700&family=Permanent+Marker&family=Caveat:wght@400;700&family=Architects+Daughter&family=Sacramento&family=Monoton&family=Fredoka+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+    <div class="editor-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-left">
+                <i class="ph ph-presentation-chart" style="font-size: 24px; color: #C13B1B;"></i>
+                <div class="file-title">
+                    <input type="text" value="Presentation1" class="title-input">
+                    <div class="auto-save-status">Saved</div>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="share-btn">Share</button>
+            </div>
+        </header>
+
+        <!-- Ribbon Menu -->
+        <div class="ribbon">
+            <div class="ribbon-tabs">
+                <button class="tab-btn active" data-tab="home">Home</button>
+                <button class="tab-btn" data-tab="insert">Insert</button>
+                <button class="tab-btn" data-tab="design">Design</button>
+                <button class="tab-btn" data-tab="transitions">Transitions</button>
+                <button class="tab-btn" data-tab="animations">Animations</button>
+                <button class="tab-btn" data-tab="slide-show">Slide Show</button>
+                <button class="tab-btn" data-tab="review">Review</button>
+                <button class="tab-btn" data-tab="view">View</button>
+                <button class="tab-btn" data-tab="help">Help</button>
+            </div>
+            
+            <div class="ribbon-content" id="homeTab" style="display: flex;">
+                <div class="ribbon-section">
+                    <div class="section-title">Clipboard</div>
+                    <div class="button-group">
+                        <button id="undoBtn" class="ribbon-btn" title="Undo (Ctrl+Z)">
+                            <i class="ph ph-arrow-counter-clockwise"></i>
+                            <span>Undo</span>
+                        </button>
+                        <button id="redoBtn" class="ribbon-btn" title="Redo (Ctrl+Y)">
+                            <i class="ph ph-arrow-clockwise"></i>
+                            <span>Redo</span>
+                        </button>
+                        <div class="separator"></div>
+                        <button class="ribbon-btn">
+                            <i class="ph ph-clipboard"></i>
+                            <span>Paste</span>
+                        </button>
+                        <button class="ribbon-btn">
+                            <i class="ph ph-scissors"></i>
+                            <span>Cut</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="ribbon-section font-section">
+                    <div class="section-title">Font</div>
+                    <div class="font-controls">
+                        <div class="font-dropdown">
+                            <button class="font-dropdown-btn" id="fontFamilyBtn">
+                                <span class="selected-font">Arial</span>
+                                <i class="ph ph-caret-down"></i>
+                            </button>
+                            <div class="font-dropdown-content" id="fontFamilyDropdown">
+                                <div class="font-search">
+                                    <i class="ph ph-magnifying-glass"></i>
+                                    <input type="text" placeholder="Search fonts..." id="fontSearch">
+                                </div>
+                                <div class="font-list">
+                                    <div class="font-category" id="recentFonts">
+                                        <div class="category-label">Recently Used</div>
+                                    </div>
+                                    <div class="font-category">
+                                        <div class="category-label">System Fonts</div>
+                                        <div class="font-item" data-font="Helvetica">
+                                            <div class="font-name">Helvetica</div>
+                                            <div class="font-preview" style="font-family: Helvetica">The quick brown fox</div>
+                                        </div>
+                                        <div class="font-item" data-font="Times New Roman">
+                                            <div class="font-name">Times New Roman</div>
+                                            <div class="font-preview" style="font-family: 'Times New Roman'">The quick brown fox</div>
+                                        </div>
+                                        <div class="font-item" data-font="Calibri">
+                                            <div class="font-name">Calibri</div>
+                                            <div class="font-preview" style="font-family: Calibri">The quick brown fox</div>
+                                        </div>
+                                        <div class="font-item" data-font="Georgia">
+                                            <div class="font-name">Georgia</div>
+                                            <div class="font-preview" style="font-family: Georgia">The quick brown fox</div>
+                                        </div>
+                                        <div class="font-item" data-font="Verdana">
+                                            <div class="font-name">Verdana</div>
+                                            <div class="font-preview" style="font-family: Verdana">The quick brown fox</div>
+                                        </div>
+                                    </div>
+                                    <div class="font-category">
+                                        <div class="category-label">Heading Fonts</div>
+                                        <div class="font-item" data-font="Montserrat">
+                                            <div class="font-name">Montserrat</div>
+                                            <div class="font-preview" style="font-family: 'Montserrat'">The quick brown fox</div>
+                                        </div>
+                                        <div class="font-item" data-font="Playfair Display">
+                                            <div class="font-name">Playfair Display</div>
+                                            <div class="font-preview" style="font-family: 'Playfair Display'">The quick brown fox</div>
+                                        </div>
+                                        <div class="font-item" data-font="Oswald">
+                                            <div class="font-name">Oswald</div>
+                                            <div class="font-preview" style="font-family: 'Oswald'">The quick brown fox</div>
+                                        </div>
+                                    </div>
+                                    <div class="font-category">
+                                        <div class="category-label">Body Text</div>
+                                        <div class="font-item" data-font="Open Sans">
+                                            <div class="font-name">Open Sans</div>
+                                            <div class="font-preview" style="font-family: 'Open Sans'">The quick brown fox</div>
+                                        </div>
+                                        <div class="font-item" data-font="Roboto">
+                                            <div class="font-name">Roboto</div>
+                                            <div class="font-preview" style="font-family: 'Roboto'">The quick brown fox</div>
+                                        </div>
+                                        <div class="font-item" data-font="Lato">
+                                            <div class="font-name">Lato</div>
+                                            <div class="font-preview" style="font-family: 'Lato'">The quick brown fox</div>
+                                        </div>
+                                    </div>
+                                    <div class="font-category">
+                                        <div class="category-label">Decorative Fonts</div>
+                                        <div class="font-item" data-font="Abril Fatface">
+                                            <div class="font-name">Abril Fatface</div>
+                                            <div class="font-preview" style="font-family: 'Abril Fatface'">The quick brown fox</div>
+                                        </div>
+                                        <div class="font-item" data-font="Pacifico">
+                                            <div class="font-name">Pacifico</div>
+                                            <div class="font-preview" style="font-family: 'Pacifico'">The quick brown fox</div>
+                                        </div>
+                                        <div class="font-item" data-font="Dancing Script">
+                                            <div class="font-name">Dancing Script</div>
+                                            <div class="font-preview" style="font-family: 'Dancing Script'">The quick brown fox</div>
+                                        </div>
+                                        <div class="font-item" data-font="Great Vibes">
+                                            <div class="font-name">Great Vibes</div>
+                                            <div class="font-preview" style="font-family: 'Great Vibes'">The quick brown fox</div>
+                                        </div>
+                                        <div class="font-item" data-font="Lobster">
+                                            <div class="font-name">Lobster</div>
+                                            <div class="font-preview" style="font-family: 'Lobster'">The quick brown fox</div>
+                                        </div>
+                                        <div class="font-item" data-font="Satisfy">
+                                            <div class="font-name">Satisfy</div>
+                                            <div class="font-preview" style="font-family: 'Satisfy'">The quick brown fox</div>
+                                        </div>
+                                        <div class="font-item" data-font="Cinzel">
+                                            <div class="font-name">Cinzel</div>
+                                            <div class="font-preview" style="font-family: 'Cinzel'">The quick brown fox</div>
+                                        </div>
+                                        <div class="font-item" data-font="Righteous">
+                                            <div class="font-name">Righteous</div>
+                                            <div class="font-preview" style="font-family: 'Righteous'">The quick brown fox</div>
+                                        </div>
+                                        <div class="font-item" data-font="Comfortaa">
+                                            <div class="font-name">Comfortaa</div>
+                                            <div class="font-preview" style="font-family: 'Comfortaa'">The quick brown fox</div>
+                                        </div>
+                                        <div class="font-item" data-font="Permanent Marker">
+                                            <div class="font-name">Permanent Marker</div>
+                                            <div class="font-preview" style="font-family: 'Permanent Marker'">The quick brown fox</div>
+                                        </div>
+                                        <div class="font-item" data-font="Caveat">
+                                            <div class="font-name">Caveat</div>
+                                            <div class="font-preview" style="font-family: 'Caveat'">The quick brown fox</div>
+                                        </div>
+                                        <div class="font-item" data-font="Architects Daughter">
+                                            <div class="font-name">Architects Daughter</div>
+                                            <div class="font-preview" style="font-family: 'Architects Daughter'">The quick brown fox</div>
+                                        </div>
+                                        <div class="font-item" data-font="Sacramento">
+                                            <div class="font-name">Sacramento</div>
+                                            <div class="font-preview" style="font-family: 'Sacramento'">The quick brown fox</div>
+                                        </div>
+                                        <div class="font-item" data-font="Monoton">
+                                            <div class="font-name">Monoton</div>
+                                            <div class="font-preview" style="font-family: 'Monoton'">The quick brown fox</div>
+                                        </div>
+                                        <div class="font-item" data-font="Fredoka One">
+                                            <div class="font-name">Fredoka One</div>
+                                            <div class="font-preview" style="font-family: 'Fredoka One'">The quick brown fox</div>
+                                        </div>
+                                    </div>
+                                    <div class="font-category">
+                                        <div class="category-label">Google Fonts</div>
+                                        <div class="font-item" data-font="Roboto">
+                                            <div class="font-name">Roboto</div>
+                                            <div class="font-preview" style="font-family: 'Roboto'">The quick brown fox</div>
+                                        </div>
+                                        <div class="font-item" data-font="Open Sans">
+                                            <div class="font-name">Open Sans</div>
+                                            <div class="font-preview" style="font-family: 'Open Sans'">The quick brown fox</div>
+                                        </div>
+                                        <div class="font-item" data-font="Lato">
+                                            <div class="font-name">Lato</div>
+                                            <div class="font-preview" style="font-family: 'Lato'">The quick brown fox</div>
+                                        </div>
+                                        <div class="font-item" data-font="Montserrat">
+                                            <div class="font-name">Montserrat</div>
+                                            <div class="font-preview" style="font-family: 'Montserrat'">The quick brown fox</div>
+                                        </div>
+                                        <div class="font-item" data-font="Poppins">
+                                            <div class="font-name">Poppins</div>
+                                            <div class="font-preview" style="font-family: 'Poppins'">The quick brown fox</div>
+                                        </div>
+                                        <div class="font-item" data-font="Raleway">
+                                            <div class="font-name">Raleway</div>
+                                            <div class="font-preview" style="font-family: 'Raleway'">The quick brown fox</div>
+                                        </div>
+                                        <div class="font-item" data-font="Ubuntu">
+                                            <div class="font-name">Ubuntu</div>
+                                            <div class="font-preview" style="font-family: 'Ubuntu'">The quick brown fox</div>
+                                        </div>
+                                        <div class="font-item" data-font="Source Sans Pro">
+                                            <div class="font-name">Source Sans Pro</div>
+                                            <div class="font-preview" style="font-family: 'Source Sans Pro'">The quick brown fox</div>
+                                        </div>
+                                        <div class="font-item" data-font="Merriweather">
+                                            <div class="font-name">Merriweather</div>
+                                            <div class="font-preview" style="font-family: 'Merriweather'">The quick brown fox</div>
+                                        </div>
+                                        <div class="font-item" data-font="Nunito">
+                                            <div class="font-name">Nunito</div>
+                                            <div class="font-preview" style="font-family: 'Nunito'">The quick brown fox</div>
+                                        </div>
+                                        <div class="font-item" data-font="Roboto Slab">
+                                            <div class="font-name">Roboto Slab</div>
+                                            <div class="font-preview" style="font-family: 'Roboto Slab'">The quick brown fox</div>
+                                        </div>
+                                        <div class="font-item" data-font="PT Sans">
+                                            <div class="font-name">PT Sans</div>
+                                            <div class="font-preview" style="font-family: 'PT Sans'">The quick brown fox</div>
+                                        </div>
+                                        <div class="font-item" data-font="Work Sans">
+                                            <div class="font-name">Work Sans</div>
+                                            <div class="font-preview" style="font-family: 'Work Sans'">The quick brown fox</div>
+                                        </div>
+                                        <div class="font-item" data-font="Quicksand">
+                                            <div class="font-name">Quicksand</div>
+                                            <div class="font-preview" style="font-family: 'Quicksand'">The quick brown fox</div>
+                                        </div>
+                                        <div class="font-item" data-font="Rubik">
+                                            <div class="font-name">Rubik</div>
+                                            <div class="font-preview" style="font-family: 'Rubik'">The quick brown fox</div>
+                                        </div>
+                                        <div class="font-item" data-font="Noto Sans">
+                                            <div class="font-name">Noto Sans</div>
+                                            <div class="font-preview" style="font-family: 'Noto Sans'">The quick brown fox</div>
+                                        </div>
+                                        <div class="font-item" data-font="Inter">
+                                            <div class="font-name">Inter</div>
+                                            <div class="font-preview" style="font-family: 'Inter'">The quick brown fox</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="font-size-group">
+                            <input type="number" id="fontSize" value="20" min="1" max="400" title="Font Size (Ctrl+Shift+> to increase, Ctrl+Shift+< to decrease)">
+                        </div>
+                    </div>
+                    <div class="font-style-controls">
+                        <button id="boldBtn" class="style-btn" title="Bold">
+                            <i class="ph ph-text-b"></i>
+                        </button>
+                        <button id="italicBtn" class="style-btn" title="Italic">
+                            <i class="ph ph-text-italic"></i>
+                        </button>
+                        <button id="underlineBtn" class="style-btn" title="Underline">
+                            <i class="ph ph-text-underline"></i>
+                        </button>
+                        <input type="color" id="textColor" value="#000000" title="Text Color">
+                    </div>
+                </div>
+
+                <div class="ribbon-section paragraph-section">
+                    <div class="section-title">Paragraph</div>
+                    <div class="paragraph-controls">
+                        <div class="align-controls">
+                            <button id="alignLeftBtn" class="align-btn active" title="Align Left (Ctrl+L)">
+                                <i class="ph ph-text-align-left"></i>
+                            </button>
+                            <button id="alignCenterBtn" class="align-btn" title="Align Center (Ctrl+E)">
+                                <i class="ph ph-text-align-center"></i>
+                            </button>
+                            <button id="alignRightBtn" class="align-btn" title="Align Right (Ctrl+R)">
+                                <i class="ph ph-text-align-right"></i>
+                            </button>
+                            <button id="alignJustifyBtn" class="align-btn" title="Align Justify (Ctrl+J)">
+                                <i class="ph ph-text-align-justify"></i>
+                            </button>
+                            <div class="separator"></div>
+                            <button id="lineSpacingBtn" class="align-btn" title="Line Spacing">
+                                <i class="ph ph-text-columns"></i>
+                            </button>
+                            <div class="spacing-dropdown" id="lineSpacingDropdown">
+                                <div class="spacing-item" data-spacing="1">
+                                    <i class="ph ph-text-columns"></i>
+                                    <span>1.0</span>
+                                </div>
+                                <div class="spacing-item" data-spacing="1.15">
+                                    <i class="ph ph-text-columns"></i>
+                                    <span>1.15</span>
+                                </div>
+                                <div class="spacing-item" data-spacing="1.5">
+                                    <i class="ph ph-text-columns"></i>
+                                    <span>1.5</span>
+                                </div>
+                                <div class="spacing-item" data-spacing="2">
+                                    <i class="ph ph-text-columns"></i>
+                                    <span>2.0</span>
+                                </div>
+                                <div class="spacing-item custom">
+                                    <i class="ph ph-sliders-horizontal"></i>
+                                    <span>Custom Spacing...</span>
+                                </div>
+                            </div>
+                            <div class="custom-spacing-dialog" id="customSpacingDialog">
+                                <div class="dialog-header">
+                                    <h3>Custom Line Spacing</h3>
+                                    <button class="close-btn">
+                                        <i class="ph ph-x"></i>
+                                    </button>
+                                </div>
+                                <div class="dialog-content">
+                                    <div class="spacing-option">
+                                        <input type="radio" name="spacingType" id="multiple" value="multiple" checked>
+                                        <label for="multiple">Multiple</label>
+                                        <input type="number" id="multipleValue" value="1.0" min="0.1" max="5" step="0.1">
+                                    </div>
+                                    <div class="spacing-option">
+                                        <input type="radio" name="spacingType" id="exact" value="exact">
+                                        <label for="exact">Exact</label>
+                                        <input type="number" id="exactValue" value="12" min="1" max="100" disabled>
+                                        <span>pt</span>
+                                    </div>
+                                </div>
+                                <div class="dialog-footer">
+                                    <button class="dialog-btn" id="applySpacing">OK</button>
+                                    <button class="dialog-btn" id="cancelSpacing">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ribbon-section slides-section">
+                    <div class="section-title">Slides</div>
+                    <div class="button-group">
+                        <button id="newSlideBtn" class="ribbon-btn" title="New Slide">
+                            <i class="ph ph-plus"></i>
+                            <span>New Slide</span>
+                        </button>
+                        <button id="layoutBtn" class="ribbon-btn" title="Layout">
+                            <i class="ph ph-layout"></i>
+                            <span>Layout</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="ribbon-section">
+                    <div class="section-title">Drawing</div>
+                    <div class="button-group">
+                        <button id="textBoxBtn" class="ribbon-btn">
+                            <i class="ph ph-text-t"></i>
+                            <span>Text Box</span>
+                        </button>
+                        <div class="shapes-dropdown">
+                            <button id="shapeBtn" class="ribbon-btn">
+                                <i class="ph ph-shapes"></i>
+                                <span>Shapes</span>
+                                <i class="ph ph-caret-down"></i>
+                            </button>
+                            <div class="shapes-panel" id="shapesPanel">
+                                <div class="shapes-category">
+                                    <h3>Basic Shapes</h3>
+                                    <div class="shapes-grid">
+                                        <button class="shape-item" data-shape="rectangle">
+                                            <i class="ph ph-square"></i>
+                                        </button>
+                                        <button class="shape-item" data-shape="circle">
+                                            <i class="ph ph-circle"></i>
+                                        </button>
+                                        <button class="shape-item" data-shape="triangle">
+                                            <i class="ph ph-triangle"></i>
+                                        </button>
+                                        <button class="shape-item" data-shape="oval">
+                                            <i class="ph ph-circle-half"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="shapes-category">
+                                    <h3>Lines & Connectors</h3>
+                                    <div class="shapes-grid">
+                                        <button class="shape-item" data-shape="line">
+                                            <i class="ph ph-line-segment"></i>
+                                        </button>
+                                        <button class="shape-item" data-shape="arrow">
+                                            <i class="ph ph-arrow-right"></i>
+                                        </button>
+                                        <button class="shape-item" data-shape="doubleArrow">
+                                            <i class="ph ph-arrows-horizontal"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button id="formatShapeBtn" class="ribbon-btn">
+                            <i class="ph ph-paint-brush"></i>
+                            <span>Format</span>
+                        </button>
+                        <button id="arrangeBtn" class="ribbon-btn">
+                            <i class="ph ph-layers"></i>
+                            <span>Arrange</span>
+                        </button>
+                        <button id="deleteBtn" class="ribbon-btn">
+                            <i class="ph ph-trash"></i>
+                            <span>Delete</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ribbon-content" id="insertTab" style="display: none;">
+                <div class="ribbon-section">
+                    <div class="section-title">Tables</div>
+                    <div class="button-group">
+                        <button class="ribbon-btn">
+                            <i class="ph ph-table"></i>
+                            <span>Table</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="ribbon-section">
+                    <div class="section-title">Images & Media</div>
+                    <div class="button-group">
+                        <button class="ribbon-btn">
+                            <i class="ph ph-image"></i>
+                            <span>Pictures</span>
+                            <span class="sub-text">From Computer</span>
+                        </button>
+                        <button class="ribbon-btn">
+                            <i class="ph ph-image-square"></i>
+                            <span>Online Pictures</span>
+                        </button>
+                        <button class="ribbon-btn">
+                            <i class="ph ph-video-camera"></i>
+                            <span>Video</span>
+                        </button>
+                        <button class="ribbon-btn">
+                            <i class="ph ph-music-notes"></i>
+                            <span>Audio</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="ribbon-section">
+                    <div class="section-title">Illustrations</div>
+                    <div class="button-group">
+                        <button class="ribbon-btn">
+                            <i class="ph ph-shapes"></i>
+                            <span>Shapes</span>
+                        </button>
+                        <button class="ribbon-btn">
+                            <i class="ph ph-icon"></i>
+                            <span>Icons</span>
+                        </button>
+                        <button class="ribbon-btn">
+                            <i class="ph ph-chart-bar"></i>
+                            <span>Chart</span>
+                        </button>
+                        <button class="ribbon-btn">
+                            <i class="ph ph-flow-arrow"></i>
+                            <span>SmartArt</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="ribbon-section">
+                    <div class="section-title">Links</div>
+                    <div class="button-group">
+                        <button class="ribbon-btn">
+                            <i class="ph ph-link"></i>
+                            <span>Link</span>
+                        </button>
+                        <button class="ribbon-btn">
+                            <i class="ph ph-text-columns"></i>
+                            <span>Text Box</span>
+                        </button>
+                        <button class="ribbon-btn">
+                            <i class="ph ph-text-h"></i>
+                            <span>Header & Footer</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="ribbon-section">
+                    <div class="section-title">Comments</div>
+                    <div class="button-group">
+                        <button class="ribbon-btn">
+                            <i class="ph ph-chat-centered"></i>
+                            <span>New Comment</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ribbon-content" id="designTab" style="display: none;">
+                <div class="ribbon-section">
+                    <div class="section-title">Themes</div>
+                    <div class="theme-gallery scrollable-gallery">
+                        <div class="theme-item">
+                            <div class="theme-preview" style="background: linear-gradient(45deg, #ffffff, #f0f0f0)">
+                                <span>Office</span>
+                            </div>
+                            <span class="theme-name">Office</span>
+                        </div>
+                        <div class="theme-item">
+                            <div class="theme-preview" style="background: linear-gradient(45deg, #4285f4, #34a853)">
+                                <span>Modern</span>
+                            </div>
+                            <span class="theme-name">Modern</span>
+                        </div>
+                        <div class="theme-item">
+                            <div class="theme-preview" style="background: linear-gradient(45deg, #ea4335, #fbbc05)">
+                                <span>Vibrant</span>
+                            </div>
+                            <span class="theme-name">Vibrant</span>
+                        </div>
+                        <div class="theme-item">
+                            <div class="theme-preview" style="background: linear-gradient(45deg, #202124, #3c4043)">
+                                <span>Dark</span>
+                            </div>
+                            <span class="theme-name">Dark</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ribbon-section">
+                    <div class="section-title">Background Styles</div>
+                    <div class="background-gallery scrollable-gallery">
+                        <button class="background-style" style="background: #ffffff">
+                            <i class="ph ph-check"></i>
+                        </button>
+                        <button class="background-style" style="background: #f0f0f0"></button>
+                        <button class="background-style" style="background: #e8eaed"></button>
+                        <button class="background-style" style="background: linear-gradient(45deg, #4285f4, #34a853)"></button>
+                        <button class="background-style" style="background: linear-gradient(45deg, #ea4335, #fbbc05)"></button>
+                    </div>
+                </div>
+                
+                <div class="ribbon-section">
+                    <div class="section-title">Customize</div>
+                    <div class="button-group">
+                        <button class="ribbon-btn">
+                            <i class="ph ph-paint-brush"></i>
+                            <span>Format Background</span>
+                        </button>
+                        <button class="ribbon-btn">
+                            <i class="ph ph-palette"></i>
+                            <span>Colors</span>
+                        </button>
+                        <button class="ribbon-btn">
+                            <i class="ph ph-text-aa"></i>
+                            <span>Fonts</span>
+                        </button>
+                        <button class="ribbon-btn">
+                            <i class="ph ph-selection-background"></i>
+                            <span>Effects</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ribbon-content" id="transitionsTab" style="display: none;">
+                <div class="ribbon-section">
+                    <div class="section-title">Transition Effects</div>
+                    <div class="transition-gallery scrollable-gallery">
+                        <div class="transition-item" data-effect="none">
+                            <div class="transition-preview">
+                                <i class="ph ph-prohibit"></i>
+                            </div>
+                            <span class="transition-name">None</span>
+                        </div>
+                        <div class="transition-item" data-effect="fade">
+                            <div class="transition-preview">
+                                <i class="ph ph-fade"></i>
+                            </div>
+                            <span class="transition-name">Fade</span>
+                        </div>
+                        <div class="transition-item" data-effect="push">
+                            <div class="transition-preview">
+                                <i class="ph ph-arrows-left-right"></i>
+                            </div>
+                            <span class="transition-name">Push</span>
+                        </div>
+                        <div class="transition-item" data-effect="wipe">
+                            <div class="transition-preview">
+                                <i class="ph ph-arrow-fat-right"></i>
+                            </div>
+                            <span class="transition-name">Wipe</span>
+                        </div>
+                        <div class="transition-item" data-effect="split">
+                            <div class="transition-preview">
+                                <i class="ph ph-arrows-out-cardinal"></i>
+                            </div>
+                            <span class="transition-name">Split</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ribbon-section">
+                    <div class="section-title">Timing</div>
+                    <div class="timing-controls">
+                        <div class="timing-group">
+                            <label>Duration:</label>
+                            <input type="number" value="1.00" min="0.00" step="0.25" class="time-input">
+                        </div>
+                        <div class="timing-group">
+                            <label>Delay:</label>
+                            <input type="number" value="0.00" min="0.00" step="0.25" class="time-input">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ribbon-section">
+                    <div class="section-title">Transition Options</div>
+                    <div class="button-group">
+                        <button class="ribbon-btn">
+                            <i class="ph ph-gear"></i>
+                            <span>Effect Options</span>
+                        </button>
+                        <button class="ribbon-btn" title="Apply to All Slides">
+                            <i class="ph ph-copy"></i>
+                            <span>Apply to All</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="ribbon-section">
+                    <div class="section-title">Preview</div>
+                    <div class="button-group">
+                        <button class="ribbon-btn">
+                            <i class="ph ph-play"></i>
+                            <span>Preview</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ribbon-content" id="animationsTab" style="display: none;">
+                <div class="ribbon-section">
+                    <div class="section-title">Animation Effects</div>
+                    <div class="animation-gallery scrollable-gallery">
+                        <div class="animation-item" data-effect="none">
+                            <div class="animation-preview">
+                                <i class="ph ph-prohibit"></i>
+                            </div>
+                            <span class="animation-name">None</span>
+                        </div>
+                        <div class="animation-item" data-effect="fade">
+                            <div class="animation-preview">
+                                <i class="ph ph-fade"></i>
+                            </div>
+                            <span class="animation-name">Fade</span>
+                        </div>
+                        <div class="animation-item" data-effect="fly-in">
+                            <div class="animation-preview">
+                                <i class="ph ph-arrow-fat-lines-right"></i>
+                            </div>
+                            <span class="animation-name">Fly In</span>
+                        </div>
+                        <div class="animation-item" data-effect="zoom">
+                            <div class="animation-preview">
+                                <i class="ph ph-arrows-out"></i>
+                            </div>
+                            <span class="animation-name">Zoom</span>
+                        </div>
+                        <div class="animation-item" data-effect="bounce">
+                            <div class="animation-preview">
+                                <i class="ph ph-arrow-fat-up"></i>
+                            </div>
+                            <span class="animation-name">Bounce</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ribbon-section">
+                    <div class="section-title">Timing</div>
+                    <div class="timing-controls">
+                        <div class="timing-group">
+                            <label>Start:</label>
+                            <select class="timing-select">
+                                <option value="on-click">On Click</option>
+                                <option value="with-previous">With Previous</option>
+                                <option value="after-previous">After Previous</option>
+                            </select>
+                        </div>
+                        <div class="timing-group">
+                            <label>Duration:</label>
+                            <input type="number" value="1.00" min="0.00" step="0.25" class="time-input">
+                        </div>
+                        <div class="timing-group">
+                            <label>Delay:</label>
+                            <input type="number" value="0.00" min="0.00" step="0.25" class="time-input">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ribbon-section">
+                    <div class="section-title">Advanced Animation</div>
+                    <div class="button-group">
+                        <button class="ribbon-btn">
+                            <i class="ph ph-plus"></i>
+                            <span>Add Animation</span>
+                        </button>
+                        <button class="ribbon-btn">
+                            <i class="ph ph-gear"></i>
+                            <span>Effect Options</span>
+                        </button>
+                        <button class="ribbon-btn">
+                            <i class="ph ph-list"></i>
+                            <span>Animation Pane</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="ribbon-section">
+                    <div class="section-title">Preview</div>
+                    <div class="button-group">
+                        <button class="ribbon-btn">
+                            <i class="ph ph-play"></i>
+                            <span>Preview</span>
+                        </button>
+                        <button class="ribbon-btn">
+                            <i class="ph ph-play-pause"></i>
+                            <span>From Current</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ribbon-content" id="slide-showTab" style="display: none;">
+                <div class="ribbon-section">
+                    <div class="section-title">Start Slide Show</div>
+                    <div class="button-group">
+                        <button class="ribbon-btn">
+                            <i class="ph ph-play"></i>
+                            <span>From Beginning</span>
+                        </button>
+                        <button class="ribbon-btn">
+                            <i class="ph ph-play-pause"></i>
+                            <span>From Current Slide</span>
+                        </button>
+                        <button class="ribbon-btn">
+                            <i class="ph ph-selection"></i>
+                            <span>Present Online</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ribbon-content" id="reviewTab" style="display: none;">
+                <div class="ribbon-section">
+                    <div class="section-title">Comments</div>
+                    <div class="button-group">
+                        <button class="ribbon-btn">
+                            <i class="ph ph-chat-centered"></i>
+                            <span>New Comment</span>
+                        </button>
+                        <button class="ribbon-btn">
+                            <i class="ph ph-chats"></i>
+                            <span>Show Comments</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ribbon-content" id="viewTab" style="display: none;">
+                <div class="ribbon-section">
+                    <div class="section-title">Presentation Views</div>
+                    <div class="button-group">
+                        <button class="ribbon-btn">
+                            <i class="ph ph-monitor"></i>
+                            <span>Normal</span>
+                        </button>
+                        <button class="ribbon-btn">
+                            <i class="ph ph-squares-four"></i>
+                            <span>Slide Sorter</span>
+                        </button>
+                        <button class="ribbon-btn">
+                            <i class="ph ph-book-open"></i>
+                            <span>Reading View</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="ribbon-section">
+                    <div class="section-title">Show/Hide</div>
+                    <div class="button-group">
+                        <button class="ribbon-btn">
+                            <i class="ph ph-ruler"></i>
+                            <span>Ruler</span>
+                        </button>
+                        <button class="ribbon-btn">
+                            <i class="ph ph-grid-four"></i>
+                            <span>Gridlines</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ribbon-content" id="helpTab" style="display: none;">
+                <div class="ribbon-section">
+                    <div class="section-title">Help</div>
+                    <div class="button-group">
+                        <button class="ribbon-btn">
+                            <i class="ph ph-question"></i>
+                            <span>Help</span>
+                        </button>
+                        <button class="ribbon-btn">
+                            <i class="ph ph-info"></i>
+                            <span>About</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <!-- Slide Navigation Panel -->
+            <div class="slide-nav">
+                <div class="slide-view-controls">
+                    <button class="view-btn active">Thumbnails</button>
+                    <button class="view-btn">Outline</button>
+                </div>
+                <div class="slide-thumbnails" id="slideThumbnails">
+                    <div class="slide-thumbnail-wrapper">
+                        <div class="slide-number">1</div>
+                        <div class="slide-thumbnail active">
+                            <canvas class="thumbnail-canvas"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-actions">
+                    <button class="slide-action-btn" title="New Slide (Ctrl+M)">
+                        <i class="ph ph-plus"></i>
+                    </button>
+                    <button class="slide-action-btn" title="Duplicate Slide (Ctrl+D)">
+                        <i class="ph ph-copy"></i>
+                    </button>
+                    <button class="slide-action-btn" title="Delete Slide (Ctrl+Delete)">
+                        <i class="ph ph-trash"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Main Editor Area -->
+            <div class="slide-editor">
+                <div class="zoom-controls">
+                    <button class="zoom-btn">
+                        <i class="ph ph-minus-circle"></i>
+                    </button>
+                    <span class="zoom-level">100%</span>
+                    <button class="zoom-btn">
+                        <i class="ph ph-plus-circle"></i>
+                    </button>
+                </div>
+                <div class="canvas-container">
+                    <canvas id="slideCanvas"></canvas>
+                </div>
+            </div>
+            
+            <!-- Format Panel -->
+            <div class="format-panel">
+                <div class="format-header">Format</div>
+                <div class="format-content">
+                    <div class="shape-format-panel" style="display: none;">
+                        <div class="format-section">
+                            <h3>Fill</h3>
+                            <div class="color-picker">
+                                <div class="color-controls">
+                                    <input type="color" id="shapeFill" value="#ffffff">
+                                    <button id="noFill" class="format-btn" title="No Fill">
+                                        <i class="ph ph-prohibit"></i>
+                                    </button>
+                                </div>
+                                <div class="color-palette">
+                                    <button class="color-btn" data-color="#FFFFFF" style="background: #FFFFFF; border: 1px solid #e1dfdd;"></button>
+                                    <button class="color-btn" data-color="#000000" style="background: #000000"></button>
+                                    <button class="color-btn" data-color="#FF0000" style="background: #FF0000"></button>
+                                    <button class="color-btn" data-color="#00FF00" style="background: #00FF00"></button>
+                                    <button class="color-btn" data-color="#0000FF" style="background: #0000FF"></button>
+                                    <button class="color-btn" data-color="#FFFF00" style="background: #FFFF00"></button>
+                                    <button class="color-btn" data-color="#FF00FF" style="background: #FF00FF"></button>
+                                    <button class="color-btn" data-color="#00FFFF" style="background: #00FFFF"></button>
+                                    <button class="color-btn" data-color="#800000" style="background: #800000"></button>
+                                    <button class="color-btn" data-color="#808000" style="background: #808000"></button>
+                                    <button class="color-btn" data-color="#008000" style="background: #008000"></button>
+                                    <button class="color-btn" data-color="#800080" style="background: #800080"></button>
+                                    <button class="color-btn" data-color="#008080" style="background: #008080"></button>
+                                    <button class="color-btn" data-color="#000080" style="background: #000080"></button>
+                                    <button class="color-btn" data-color="#7F7F7F" style="background: #7F7F7F"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="format-section">
+                            <h3>Stroke</h3>
+                            <div class="stroke-controls">
+                                <div class="color-picker">
+                                    <div class="color-controls">
+                                        <input type="color" id="shapeStroke" value="#000000">
+                                        <button id="noStroke" class="format-btn" title="No Stroke">
+                                            <i class="ph ph-prohibit"></i>
+                                        </button>
+                                    </div>
+                                    <div class="color-palette">
+                                        <button class="color-btn" data-color="#000000" style="background: #000000"></button>
+                                        <button class="color-btn" data-color="#7F7F7F" style="background: #7F7F7F"></button>
+                                        <button class="color-btn" data-color="#FF0000" style="background: #FF0000"></button>
+                                        <button class="color-btn" data-color="#00FF00" style="background: #00FF00"></button>
+                                        <button class="color-btn" data-color="#0000FF" style="background: #0000FF"></button>
+                                        <button class="color-btn" data-color="#FFFF00" style="background: #FFFF00"></button>
+                                        <button class="color-btn" data-color="#FF00FF" style="background: #FF00FF"></button>
+                                        <button class="color-btn" data-color="#00FFFF" style="background: #00FFFF"></button>
+                                        <button class="color-btn" data-color="#800000" style="background: #800000"></button>
+                                        <button class="color-btn" data-color="#808000" style="background: #808000"></button>
+                                    </div>
+                                </div>
+                                <div class="stroke-width">
+                                    <label>Width</label>
+                                    <input type="number" id="strokeWidth" value="1" min="0" max="20">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="format-section">
+                            <h3>Transform</h3>
+                            <div class="transform-controls">
+                                <div class="transform-group">
+                                    <label>Width</label>
+                                    <input type="number" id="shapeWidth" min="1">
+                                </div>
+                                <div class="transform-group">
+                                    <label>Height</label>
+                                    <input type="number" id="shapeHeight" min="1">
+                                </div>
+                                <div class="transform-group">
+                                    <label>Rotation</label>
+                                    <input type="number" id="shapeRotation" value="0" min="0" max="360">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <div class="slide-counter">Slide 1 of 1</div>
+            <div class="view-controls">
+                <button class="view-mode-btn active">Normal</button>
+                <button class="view-mode-btn">Slide Sorter</button>
+                <button class="view-mode-btn">Reading View</button>
+            </div>
+            <div class="zoom-status">100%</div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js"></script>
+    <script src="https://unpkg.com/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+    <script src="js/editor.js"></script>
+</body>
+</html> 
